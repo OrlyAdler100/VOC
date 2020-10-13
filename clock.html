@@ -1,64 +1,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VOC Counter</title>
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>VOC Timer</title>
 
-    <script>
+            <script>
 
-        function counter()
-        {
-            const timeSpan = document.getElementById('counterBlock');
+                function counter()
+                {
+                    const timeSpan = document.getElementById('counterBlock');
+                    const startTime = new Date().getTime();
 
-            const secondscount = 240;
-            const now = new Date().getTime();
-            const deadline = secondscount  * 1000 + now;
-
-
-            let myTimer = setInterval(() => {
-                let currentTime = new Date().getTime();
-                let distance = deadline - currentTime;
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                seconds = (seconds>9) ? seconds : '0' + seconds;
-                minutes = '0' + minutes;
-                console.log("distance:", distance)
-                if (distance > -1) {
-                    timeSpan.innerHTML = minutes + ' : ' + seconds;
-                } else {
-                    clearInterval(myTimer);
+                    let myTimer = setInterval(() => {
+                        let currentTime = new Date().getTime();
+                        let distance = currentTime - startTime;
+                        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        seconds = (seconds>9) ? seconds : '0' + seconds;
+                        minutes = '0' + minutes;
+                        if (distance > -1) {
+                            timeSpan.innerHTML = minutes + ' : ' + seconds;
+                        } else {
+                            clearInterval(myTimer);
+                        }
+                    }, 500)
                 }
-            }, 500)
-        }
 
-        window.onload = function() {
-            console.log("It's loaded!")
-            counter();
-        }
-    </script>
+                window.onload = function() {
+                    console.log("It's loaded!")
+                    counter();
+                }
+            </script>
 
-    <style>
-        body {
-            font-size: 10px;
-        }
-        #counterBlock {
-            color: #999;
-            font-family:"Times New Roman, serif";
-            font-size: 4em;
-            font-weight: bold;
-            margin: 0px;
-            min-width: 118px;
-            min-height: 38px;
-            padding: 20px;
-            text-align: center;
-        }
+            <style>
+                body {
+                    font-size: 10px;
+                }
+                #counterBlock {
+                    color: #999;
+                    font-family:"Times New Roman, serif";
+                    font-size: 4em;
+                    font-weight: bold;
+                    margin: 0px;
+                    min-width: 118px;
+                    min-height: 38px;
+                    padding: 20px;
+                    text-align: center;
+                }
 
 
-    </style>
+            </style>
 
-</head>
+        </head>
 <body>
 <div id="counterBlock">
     ...
 </div>
+</body>
+</html>
+</title>
+</head>
+<body>
+
 </body>
 </html>
